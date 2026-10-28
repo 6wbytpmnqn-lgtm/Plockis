@@ -42,16 +42,22 @@
     }
 
     button,
-    input {
+    input,
+    select {
       font: inherit;
     }
 
     a:focus-visible,
     button:focus-visible,
     input:focus-visible,
+    select:focus-visible,
     summary:focus-visible {
       outline: 3px solid var(--green);
       outline-offset: 5px;
+    }
+
+    [hidden] {
+      display: none !important;
     }
 
     .wrap {
@@ -212,123 +218,6 @@
       font-size: 13px;
     }
 
-    .phone {
-      max-width: 330px;
-      width: 100%;
-      margin: auto;
-      padding: 12px;
-      border-radius: 42px;
-      background: #214b3b;
-      box-shadow: 0 25px 65px #183c2f20;
-    }
-
-    .screen {
-      padding: 22px 14px 16px;
-      background: var(--bg);
-      border-radius: 31px;
-    }
-
-    .phone-title {
-      color: var(--green);
-      font-weight: 750;
-      text-align: center;
-      margin: 0 0 18px;
-    }
-
-    .family {
-      background: white;
-      padding: 18px 12px;
-      border-radius: 20px;
-      text-align: center;
-    }
-
-    .family-wordmark {
-      background: var(--deep);
-      border-radius: 14px;
-      padding: 16px;
-      color: white;
-      font: italic bold 32px Georgia, serif;
-    }
-
-    .family-name {
-      margin-top: 9px;
-      padding: 5px 10px;
-      border-radius: 99px;
-      background: var(--sage);
-      color: var(--deep);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .05em;
-    }
-
-    .motto {
-      margin: 12px 0 0;
-      font: italic 12px Georgia, serif;
-    }
-
-    .motto span {
-      color: var(--green);
-    }
-
-    .remaining {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 12px;
-      margin-block: 14px;
-      background: var(--pale);
-      color: var(--green);
-      border-radius: 13px;
-      font-size: 12px;
-    }
-
-    .item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: white;
-      border-radius: 14px;
-      padding: 14px;
-      margin-top: 8px;
-      cursor: pointer;
-    }
-
-    .item input {
-      width: 21px;
-      height: 21px;
-      margin: 0;
-      accent-color: var(--green);
-      flex: none;
-    }
-
-    .item span {
-      font-size: 14px;
-      font-weight: 650;
-    }
-
-    .item small {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 400;
-    }
-
-    .item input:checked + span {
-      text-decoration: line-through;
-      color: var(--muted);
-    }
-
-    .reset {
-      display: block;
-      margin: 16px auto 0;
-      background: none;
-      border: 0;
-      color: var(--green);
-      text-decoration: underline;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
     .caption {
       text-align: center;
       color: var(--muted);
@@ -470,10 +359,6 @@
       font-size: 20px;
     }
 
-    .policy h3:first-child {
-      margin-top: 0;
-    }
-
     .policy li {
       margin-block: 7px;
     }
@@ -506,6 +391,578 @@
     footer p {
       font-size: 12px;
       color: var(--muted);
+    }
+
+    /* Interaktiv mobilvy */
+
+    .phone {
+      width: 100%;
+      max-width: 354px;
+      margin: auto;
+      padding: 9px;
+      border-radius: 44px;
+      background: #214b3b;
+      box-shadow: 0 25px 65px #183c2f20;
+    }
+
+    .screen {
+      height: 710px;
+      border-radius: 35px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      color: #111;
+      background: var(--bg);
+    }
+
+    .app-status {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 23px 7px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .app-status svg {
+      width: 42px;
+      height: 12px;
+      fill: currentColor;
+    }
+
+    .app-heading {
+      position: relative;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      flex: none;
+    }
+
+    .app-heading h3 {
+      margin: 0;
+      color: var(--green);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .decorative-plus {
+      position: absolute;
+      right: 13px;
+      color: var(--green);
+      background: #ffffffb8;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    .app-icon {
+      width: 21px;
+      height: 21px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex: none;
+      vertical-align: middle;
+    }
+
+    .app-search {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 28px;
+      background: #ffffffd9;
+      padding: 9px 12px;
+      margin: 0 13px 13px;
+      box-shadow: 0 8px 22px #183c2f08;
+    }
+
+    .app-search .app-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .app-search input {
+      border: 0;
+      background: transparent;
+      color: #111;
+      min-width: 0;
+      width: 100%;
+      font-size: 12px;
+      outline-offset: 4px;
+    }
+
+    .app-scroll {
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      scrollbar-width: none;
+      padding: 0 16px 16px;
+      overscroll-behavior: contain;
+    }
+
+    .app-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .app-welcome {
+      background: #fff;
+      border-radius: 23px;
+      padding: 13px 13px 19px;
+      margin-top: 5px;
+    }
+
+    .app-banner {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .app-family {
+      display: grid;
+      place-items: center;
+      margin-top: 7px;
+      height: 21px;
+      width: 100%;
+      background: #c9e3cf;
+      border-radius: 99px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #144d38;
+    }
+
+    .app-motto {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      margin: 13px 0 0;
+      font: italic 14px/1.4 Georgia, serif;
+      white-space: nowrap;
+    }
+
+    .app-motto .app-icon {
+      width: 15px;
+      height: 15px;
+      fill: var(--green);
+      stroke: none;
+    }
+
+    .app-favorites {
+      display: grid;
+      grid-template-columns: 39px 1fr 1.12fr;
+      gap: 5px;
+      margin: 18px 0;
+    }
+
+    .app-favorites button {
+      border: 0;
+      border-radius: 99px;
+      padding: 9px 3px;
+      color: var(--green);
+      background: white;
+      font-size: 10px;
+      font-weight: 650;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .app-favorites button[aria-pressed="true"] {
+      background: #d8e0df;
+    }
+
+    .app-filters {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+
+    .app-filter {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 99px;
+      background: white;
+      padding: 8px 10px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .app-filter .app-icon {
+      width: 15px;
+      height: 15px;
+    }
+
+    .app-filter select {
+      border: 0;
+      background: transparent;
+      font-size: 11px;
+      color: #111;
+      width: 100%;
+      min-width: 0;
+      cursor: pointer;
+    }
+
+    .app-count {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      color: #888;
+      font-size: 11px;
+      margin-bottom: 15px;
+    }
+
+    .app-count small {
+      font-size: 9px;
+    }
+
+    .app-products {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .app-product {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+      min-width: 0;
+    }
+
+    .app-product-image {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      background: #f0f4f2;
+      color: #72998b;
+    }
+
+    .app-product-image > .app-icon {
+      width: 45px;
+      height: 45px;
+      stroke-width: 1;
+    }
+
+    .app-heart {
+      position: absolute;
+      left: 7px;
+      top: 7px;
+      display: grid;
+      place-items: center;
+      width: 33px;
+      height: 33px;
+      border: 0;
+      border-radius: 50%;
+      background: #ffffffb8;
+      color: var(--green);
+      cursor: pointer;
+    }
+
+    .app-heart .app-icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .app-heart[aria-pressed="true"] .app-icon {
+      fill: currentColor;
+    }
+
+    .app-quantity {
+      position: absolute;
+      top: 10px;
+      right: 8px;
+      padding: 2px 6px;
+      border-radius: 30px;
+      background: #ffffffdd;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .app-product h4 {
+      margin: 9px 11px 0;
+      font-size: 13px;
+      line-height: 1.4;
+      min-height: 35px;
+    }
+
+    .app-product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      padding: 6px 8px 10px 11px;
+    }
+
+    .app-store {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #888;
+      font-size: 10px;
+    }
+
+    .app-store .app-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    .app-add {
+      display: grid;
+      place-items: center;
+      border: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--green);
+      color: white;
+      cursor: pointer;
+      flex: none;
+    }
+
+    .app-add .app-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .app-bottom {
+      margin: 5px 9px 0;
+      padding: 4px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      flex: none;
+      border: 1px solid white;
+      border-radius: 32px;
+      background: #fbfefde8;
+      box-shadow: 0 -6px 22px #183c2f05;
+    }
+
+    .app-tab {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 8px 2px;
+      border: 0;
+      background: none;
+      border-radius: 28px;
+      color: #111;
+      font-size: 8px;
+      font-weight: 650;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    button.app-tab {
+      cursor: pointer;
+    }
+
+    .app-tab .app-icon {
+      width: 23px;
+      height: 23px;
+    }
+
+    .app-tab[aria-pressed="true"] {
+      background: #e4e9e7;
+      color: var(--green);
+    }
+
+    .app-badge {
+      position: absolute;
+      top: 0;
+      right: 13px;
+      display: grid;
+      place-items: center;
+      min-width: 15px;
+      height: 15px;
+      padding: 0 3px;
+      border-radius: 20px;
+      background: var(--green);
+      color: white;
+      font-size: 9px;
+    }
+
+    .app-home {
+      margin: 9px auto 7px;
+      width: 95px;
+      height: 4px;
+      border-radius: 10px;
+      background: #172b22;
+      flex: none;
+    }
+
+    .app-summary {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 8px 0 15px;
+    }
+
+    .app-summary > div {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px;
+      background: white;
+      border-radius: 14px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .app-summary strong {
+      font-size: 19px;
+    }
+
+    .app-megaphone {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #dfe8e2;
+      color: var(--green);
+    }
+
+    .app-cart-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 9px;
+      border-bottom: 1px solid #e7ece8;
+      background: white;
+    }
+
+    .app-cart-row:first-child {
+      border-radius: 18px 18px 0 0;
+    }
+
+    .app-cart-row:last-child {
+      border-radius: 0 0 18px 18px;
+      border: 0;
+    }
+
+    .app-cart-row:only-child {
+      border-radius: 18px;
+    }
+
+    .app-check {
+      display: grid;
+      place-items: center;
+      border: 0;
+      background: transparent;
+      color: var(--green);
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    .app-check .app-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .app-cart-image {
+      width: 40px;
+      height: 49px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: #f0f4f2;
+      color: #72998b;
+      flex: none;
+    }
+
+    .app-cart-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .app-cart-main h4 {
+      margin: 0 0 4px;
+      font-size: 13px;
+    }
+
+    .app-stepper {
+      display: flex;
+      align-items: center;
+      width: 120px;
+      background: #f3f7f4;
+      border-radius: 99px;
+      color: var(--green);
+      margin-top: 6px;
+    }
+
+    .app-stepper button {
+      display: grid;
+      place-items: center;
+      height: 27px;
+      width: 40px;
+      border: 0;
+      background: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .app-stepper .app-icon {
+      width: 12px;
+      height: 12px;
+    }
+
+    .app-stepper span {
+      min-width: 25px;
+      text-align: center;
+      font-size: 11px;
+    }
+
+    .app-stepper button:disabled {
+      opacity: .3;
+      cursor: default;
+    }
+
+    .app-contribution {
+      font-size: 8px;
+      color: #888;
+      margin: 5px 0 0;
+    }
+
+    .app-cart-row.done {
+      opacity: .5;
+    }
+
+    .app-cart-row.done h4 {
+      text-decoration: line-through;
+    }
+
+    .app-empty {
+      font-size: 12px;
+      text-align: center;
+      color: #777;
+      padding: 35px 15px;
+    }
+
+    .app-reset {
+      display: block;
+      margin: 18px auto 0;
+      border: 0;
+      background: transparent;
+      color: var(--green);
+      font-size: 10px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .app-live {
+      min-height: 20px;
+      font-size: 11px;
+      color: var(--green);
+      text-align: center;
+      margin: 10px 0 0;
     }
 
     @media (max-width: 760px) {
@@ -548,6 +1005,36 @@
       }
     }
 
+    @media (max-width: 360px) {
+      .screen {
+        height: 650px;
+      }
+
+      .app-motto {
+        font-size: 11px;
+      }
+
+      .app-favorites button {
+        font-size: 9px;
+      }
+
+      .app-filter {
+        padding-inline: 7px;
+      }
+
+      .app-filter select {
+        font-size: 10px;
+      }
+
+      .app-tab {
+        font-size: 7px;
+      }
+
+      .app-product h4 {
+        font-size: 12px;
+      }
+    }
+
     @media (prefers-reduced-motion: no-preference) {
       html {
         scroll-behavior: smooth;
@@ -564,15 +1051,82 @@
       <symbol id="cloud" viewBox="0 0 24 24">
         <path d="M6 18a4 4 0 1 1 .5-8 6.1 6.1 0 0 1 11.8-1A4.5 4.5 0 1 1 18 18Z"/>
       </symbol>
+
       <symbol id="heart" viewBox="0 0 24 24">
         <path d="M20.5 4.6a5.4 5.4 0 0 0-7.6 0l-.9.9-.9-.9a5.4 5.4 0 0 0-7.6 7.6L12 21l8.5-8.8a5.4 5.4 0 0 0 0-7.6Z"/>
       </symbol>
+
       <symbol id="food" viewBox="0 0 24 24">
         <path d="M4 3v6a3 3 0 0 0 6 0V3M7 3v19M20 22V3c-4 2-5 6-5 10h5"/>
       </symbol>
+
       <symbol id="phone" viewBox="0 0 24 24">
         <rect x="6" y="2" width="12" height="20" rx="3"/>
         <path d="M10 18h4"/>
+      </symbol>
+
+      <symbol id="app-grid" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+      </symbol>
+
+      <symbol id="app-cart" viewBox="0 0 24 24">
+        <path d="M2 3h3l2 12h12l3-9H6M8 18h11"/>
+        <circle cx="9" cy="21" r="1"/>
+        <circle cx="18" cy="21" r="1"/>
+      </symbol>
+
+      <symbol id="app-gear" viewBox="0 0 24 24">
+        <path d="m10 2-.7 3-2 .9L4.7 4.3 2.3 8.5l2.3 2.1v2.8l-2.3 2.1 2.4 4.2 2.6-1.6 2 .9.7 3h4l.7-3 2-.9 2.6 1.6 2.4-4.2-2.3-2.1v-2.8l2.3-2.1-2.4-4.2-2.6 1.6-2-.9L14 2Z"/>
+        <circle cx="12" cy="12" r="3"/>
+      </symbol>
+
+      <symbol id="app-plus" viewBox="0 0 24 24">
+        <path d="M12 4v16M4 12h16"/>
+      </symbol>
+
+      <symbol id="app-minus" viewBox="0 0 24 24">
+        <path d="M4 12h16"/>
+      </symbol>
+
+      <symbol id="app-magnifier" viewBox="0 0 24 24">
+        <circle cx="10" cy="10" r="6.5"/>
+        <path d="m15 15 6 6"/>
+      </symbol>
+
+      <symbol id="app-store" viewBox="0 0 24 24">
+        <path d="M4 9v12h16V9M3 9l2-6h14l2 6M3 9c0 4 5 4 5 0 0 4 8 4 8 0 0 4 5 4 5 0M9 21v-7h6v7M6 6h12"/>
+      </symbol>
+
+      <symbol id="app-filter" viewBox="0 0 24 24">
+        <path d="M3 6h18M6 12h12M9 18h6"/>
+      </symbol>
+
+      <symbol id="app-drop" viewBox="0 0 24 24">
+        <path d="M12 2C10 6 4 11 4 16a8 8 0 0 0 16 0c0-5-6-10-8-14Z"/>
+      </symbol>
+
+      <symbol id="app-carrot" viewBox="0 0 24 24">
+        <path d="M4 21c0-8 5-14 9-14 4 0 6 3 3 7-3 4-8 6-12 7ZM14 7l1-5m2 6 5-2M9 12l3 2m-6 2 3 2"/>
+      </symbol>
+
+      <symbol id="app-box" viewBox="0 0 24 24">
+        <path d="M3 4h18v5H3ZM5 9v12h14V9M9 13h6"/>
+      </symbol>
+
+      <symbol id="app-circle" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"/>
+      </symbol>
+
+      <symbol id="app-checked" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" fill="currentColor"/>
+        <path d="m7 12 3 3 7-7" stroke="white"/>
+      </symbol>
+
+      <symbol id="app-megaphone" viewBox="0 0 24 24">
+        <path d="M3 9h5l11-5v16L8 15H3ZM8 15l2 6H6l-2-6M22 9v6"/>
       </symbol>
     </defs>
   </svg>
@@ -617,53 +1171,176 @@
       </div>
 
       <div>
-        <div class="phone" aria-label="Interaktiv exempelvy av en inköpslista">
+        <div class="phone" aria-label="Interaktivt exempel med Plockis produkt- och inköpsvyer">
           <div class="screen">
-            <p class="phone-title">Inköpslista</p>
 
-            <div class="family">
-              <div class="family-wordmark">Plockis</div>
-              <div class="family-name">VÅR FAMILJ</div>
-              <p class="motto">
-                Era favoriter, alltid nära till hands
-                <span aria-hidden="true">♥</span>
-              </p>
+            <div class="app-status" aria-hidden="true">
+              <span>9:41</span>
+              <svg viewBox="0 0 42 12">
+                <path d="M1 11V8h3v3m2 0V6h3v5m2 0V3h3v8m2 0V0h3v11M22 3q6-5 12 0l-2 2q-4-3-8 0Zm3 3q3-2 6 0l-3 4Z"/>
+                <rect x="35" y="3" width="6" height="7" rx="1"/>
+              </svg>
             </div>
 
-            <div class="remaining">
-              <span>Varor kvar att plocka</span>
-              <strong id="count" role="status" aria-live="polite">4</strong>
+            <div class="app-heading">
+              <h3 id="app-title">Produkter</h3>
+              <span class="decorative-plus" id="app-heading-plus" aria-hidden="true">
+                <svg class="app-icon"><use href="#app-plus"/></svg>
+              </span>
             </div>
 
-            <label class="item">
-              <input type="checkbox">
-              <span>Mjölk<small>2 st · Mejeri</small></span>
+            <label class="app-search" id="app-search-label">
+              <svg class="app-icon" aria-hidden="true">
+                <use href="#app-magnifier"/>
+              </svg>
+              <input
+                id="app-search"
+                type="search"
+                placeholder="Sök produkt, butik eller kategori"
+                aria-label="Sök i exempelprodukterna">
             </label>
 
-            <label class="item">
-              <input type="checkbox">
-              <span>Bananer<small>1 st · Frukt och grönt</small></span>
-            </label>
+            <div class="app-scroll">
+              <div id="app-products-page">
 
-            <label class="item">
-              <input type="checkbox">
-              <span>Tomater<small>1 st · Frukt och grönt</small></span>
-            </label>
+                <div class="app-welcome">
+                  <img
+                    class="app-banner"
+                    src="banner.png"
+                    width="1259"
+                    height="313"
+                    alt="Plockis originalbanner med figuren och matvarorna">
 
-            <label class="item">
-              <input type="checkbox">
-              <span>Pasta<small>1 st · Skafferi</small></span>
-            </label>
+                  <div class="app-family">VÅR FAMILJ</div>
 
-            <button class="reset" id="reset" type="button">
-              Återställ exempel
-            </button>
+                  <p class="app-motto">
+                    Era favoriter, alltid nära till hands
+                    <svg class="app-icon" aria-hidden="true">
+                      <use href="#heart"/>
+                    </svg>
+                  </p>
+                </div>
+
+                <div class="app-favorites" aria-label="Favoritfilter">
+                  <button type="button" data-favorite-filter="all" aria-pressed="true">
+                    Alla
+                  </button>
+                  <button type="button" data-favorite-filter="mine" aria-pressed="false">
+                    Mina favoriter
+                  </button>
+                  <button type="button" data-favorite-filter="family" aria-pressed="false">
+                    Familjens favoriter
+                  </button>
+                </div>
+
+                <div class="app-filters">
+                  <label class="app-filter">
+                    <svg class="app-icon" aria-hidden="true">
+                      <use href="#app-store"/>
+                    </svg>
+                    <select id="app-store-filter" aria-label="Filtrera exempel efter butik">
+                      <option value="">Alla butiker</option>
+                      <option>ICA</option>
+                      <option>Coop</option>
+                    </select>
+                  </label>
+
+                  <label class="app-filter">
+                    <svg class="app-icon" aria-hidden="true">
+                      <use href="#app-filter"/>
+                    </svg>
+                    <select id="app-category-filter" aria-label="Filtrera exempel efter kategori">
+                      <option value="">Alla kategorier</option>
+                      <option>Mejeri</option>
+                      <option>Frukt &amp; grönt</option>
+                      <option>Skafferi &amp; kryddor</option>
+                    </select>
+                  </label>
+                </div>
+
+                <div class="app-count">
+                  <span id="app-product-count">4 produkter</span>
+                  <small>Tryck + för nästa inköp</small>
+                </div>
+
+                <div class="app-products" id="app-product-grid"></div>
+              </div>
+
+              <div id="app-cart-page" hidden>
+                <div class="app-summary">
+                  <div>
+                    <span>Varor kvar att plocka</span>
+                    <strong id="app-remaining">0</strong>
+                  </div>
+                  <span class="app-megaphone" aria-hidden="true">
+                    <svg class="app-icon">
+                      <use href="#app-megaphone"/>
+                    </svg>
+                  </span>
+                </div>
+
+                <div id="app-cart-rows"></div>
+
+                <p class="app-empty" id="app-cart-empty">
+                  Redo för nästa inköp.<br>
+                  Lägg till varor med + på produktsidan.
+                </p>
+              </div>
+
+              <button class="app-reset" id="app-reset" type="button">
+                Återställ exempel
+              </button>
+            </div>
+
+            <div class="app-bottom" role="group" aria-label="Exempelvyns meny">
+              <button
+                type="button"
+                class="app-tab"
+                data-app-page="products"
+                aria-pressed="true">
+                <svg class="app-icon" aria-hidden="true">
+                  <use href="#app-grid"/>
+                </svg>
+                <span>Produkter</span>
+              </button>
+
+              <span class="app-tab">
+                <svg class="app-icon" aria-hidden="true">
+                  <use href="#food"/>
+                </svg>
+                <span>Maträtter</span>
+              </span>
+
+              <button
+                type="button"
+                class="app-tab"
+                data-app-page="cart"
+                aria-pressed="false">
+                <svg class="app-icon" aria-hidden="true">
+                  <use href="#app-cart"/>
+                </svg>
+                <span>Inköpslista</span>
+                <span class="app-badge" id="app-cart-badge" hidden>0</span>
+              </button>
+
+              <span class="app-tab">
+                <svg class="app-icon" aria-hidden="true">
+                  <use href="#app-gear"/>
+                </svg>
+                <span>Inställningar</span>
+              </span>
+            </div>
+
+            <div class="app-home" aria-hidden="true"></div>
           </div>
         </div>
 
+        <p class="app-live" id="app-live" role="status" aria-live="polite"></p>
+
         <p class="caption">
-          En illustrativ exempelvy. Prova att bocka av varor.<br>
-          Inget sparas eller delas från den här sidan.
+          Prova +, hjärtat och inköpslistan i exempelvyn.<br>
+          Appens originalbanner. Exempelprodukter utan bilder.<br>
+          Inget sparas eller delas.
         </p>
       </div>
     </section>
@@ -847,6 +1524,7 @@
     <section class="section" id="integritet" aria-labelledby="privacy-title">
       <p class="eyebrow">Din information</p>
       <h2 id="privacy-title">Integritetspolicy</h2>
+
       <p class="meta">
         Senast uppdaterad:
         <time datetime="2026-10-28">28 oktober 2026</time>
@@ -874,8 +1552,8 @@
 
         <h3>2. Vilka uppgifter appen använder</h3>
         <p>
-          Plockis hanterar uppgifter som du själv lägger in eller väljer
-          att dela:
+          Plockis hanterar uppgifter som du själv lägger in eller
+          väljer att dela:
         </p>
         <ul>
           <li>Ditt valda visningsnamn och hushållets namn.</li>
@@ -900,16 +1578,16 @@
           kan visas även utan internet.
         </p>
         <p>
-          <strong>I iCloud:</strong> appen använder Apples CloudKit för
-          privata uppgifter, ditt personliga bibliotek och hushållets
-          delade innehåll. Hushållets innehåll kan delas med inbjudna
-          deltagare enligt delningens behörigheter. Favoriter kan delas
-          med familjen via iCloud-delning.
+          <strong>I iCloud:</strong> appen använder Apples CloudKit
+          för privata uppgifter, ditt personliga bibliotek och
+          hushållets delade innehåll. Hushållets innehåll kan delas
+          med inbjudna deltagare enligt delningens behörigheter.
+          Favoriter kan delas med familjen via iCloud-delning.
         </p>
         <p>
           Appinnehållet skickas inte till någon separat appserver som
-          drivs av utvecklaren. Användningen av iCloud omfattas också av
-          Apples villkor och
+          drivs av utvecklaren. Användningen av iCloud omfattas också
+          av Apples villkor och
           <a href="https://www.apple.com/se/legal/privacy/"
              target="_blank" rel="noopener noreferrer">
             Apples integritetspolicy
@@ -918,17 +1596,18 @@
 
         <h3>4. Delning med andra</h3>
         <p>
-          När du delar ett hushåll kan deltagarna se det delade innehållet,
-          till exempel produkter, bilder, maträtter, inköpslistor och
-          visningsnamn. Behörigheterna avgör vem som får ändra innehållet.
-          Hushållets ägare hanterar inbjudningar och åtkomst.
+          När du delar ett hushåll kan deltagarna se det delade
+          innehållet, till exempel produkter, bilder, maträtter,
+          inköpslistor och visningsnamn. Behörigheterna avgör vem
+          som får ändra innehållet. Hushållets ägare hanterar
+          inbjudningar och åtkomst.
         </p>
         <p>
-          När du delar en överföringsfil får mottagaren tillgång till
-          produkterna, maträtterna och bilderna i filen. Hushållets
-          medlemmar, behörigheter, favoriter och inköpslista följer inte
-          med. Mottagaren och den delningstjänst du väljer hanterar
-          filen utanför Plockis.
+          När du delar en överföringsfil får mottagaren tillgång
+          till produkterna, maträtterna och bilderna i filen.
+          Hushållets medlemmar, behörigheter, favoriter och
+          inköpslista följer inte med. Mottagaren och den
+          delningstjänst du väljer hanterar filen utanför Plockis.
         </p>
 
         <h3>5. Bilder och notiser</h3>
@@ -938,18 +1617,19 @@
           tillstånd i telefonens inställningar.
         </p>
         <p>
-          Om du tillåter notiser kan appen använda iCloud för att meddela
-          om uppdateringar i det delade hushållet. Du kan stänga av
-          notiser i Plockis eller i iPhones inställningar. Apples leverans
-          och iPhones bakgrundssynkning påverkar om och när en notis visas.
+          Om du tillåter notiser kan appen använda iCloud för att
+          meddela om uppdateringar i det delade hushållet.
+          Du kan stänga av notiser i Plockis eller i iPhones
+          inställningar. Apples leverans och iPhones
+          bakgrundssynkning påverkar om och när en notis visas.
         </p>
 
         <h3>6. Annonser och spårning</h3>
         <p>
           Plockis innehåller inga annonser och använder inga
-          tredjeparts-SDK:er för annonsering eller spårning. Appen
-          använder inte dina produkter, bilder eller inköpslistor
-          för riktad reklam.
+          tredjeparts-SDK:er för annonsering eller spårning.
+          Appen använder inte dina produkter, bilder eller
+          inköpslistor för riktad reklam.
         </p>
         <p>
           Eventuell diagnostik som du väljer att dela med Apple
@@ -958,62 +1638,65 @@
 
         <h3>7. Lagring och radering</h3>
         <p>
-          Innehållet finns kvar tills du tar bort det i appen, den som
-          äger ett delat hushåll tar bort det eller uppgifter tas bort
-          via tillgängliga iCloud-funktioner.
+          Innehållet finns kvar tills du tar bort det i appen,
+          den som äger ett delat hushåll tar bort det eller
+          uppgifter tas bort via tillgängliga iCloud-funktioner.
         </p>
         <p>
-          <strong>Gemensamt hushåll:</strong> bara ägaren kan radera
-          hela hushållet. Innan raderingen sparar appen hushållets
-          produkter, maträtter och bilder i ägarens privata bibliotek.
-          Inköpslistan och själva delningen raderas sedan.
-          Om sparningen misslyckas raderas inte hushållet.
+          <strong>Gemensamt hushåll:</strong> bara ägaren kan
+          radera hela hushållet. Innan raderingen sparar appen
+          hushållets produkter, maträtter och bilder i ägarens
+          privata bibliotek. Inköpslistan och själva delningen
+          raderas sedan. Om sparningen misslyckas raderas inte
+          hushållet.
         </p>
         <p>
           <strong>Personligt bibliotek:</strong> biblioteksposter
-          raderas separat i Mitt bibliotek. Radering av ett hushåll
-          tar alltså inte automatiskt bort dessa privata kopior.
-          En senare synkning av hushållets innehåll kan lägga tillbaka
-          poster som fortfarande finns i hushållet.
+          raderas separat i Mitt bibliotek. Radering av ett
+          hushåll tar alltså inte automatiskt bort dessa privata
+          kopior. En senare synkning av hushållets innehåll kan
+          lägga tillbaka poster som fortfarande finns i hushållet.
         </p>
         <p>
-          <strong>Enheten och iCloud:</strong> att radera appen tar
-          normalt bort appens lokala lagring, men innebär inte
-          automatiskt att innehållet i iCloud raderas. Delat innehåll
-          eller exporterade filer kan också finnas kvar hos andra personer.
+          <strong>Enheten och iCloud:</strong> att radera appen
+          tar normalt bort appens lokala lagring, men innebär
+          inte automatiskt att innehållet i iCloud raderas.
+          Delat innehåll eller exporterade filer kan också
+          finnas kvar hos andra personer.
         </p>
         <p>
-          Kontakta utvecklaren om du behöver vägledning om radering,
-          rättelse eller åtkomst till dina uppgifter. För frågor om
-          ditt Apple-konto eller Apples behandling av iCloud-data
-          kontaktar du Apple.
+          Kontakta utvecklaren om du behöver vägledning om
+          radering, rättelse eller åtkomst till dina uppgifter.
+          För frågor om ditt Apple-konto eller Apples behandling
+          av iCloud-data kontaktar du Apple.
         </p>
 
         <h3>8. När du kontaktar support</h3>
         <p>
-          Om du mejlar supporten behandlas din mejladress, ditt meddelande
-          och eventuella bilagor för att besvara ditt ärende. Mejlet ger
-          inte utvecklaren automatisk åtkomst till innehållet i ditt
-          privata hushåll eller bibliotek.
+          Om du mejlar supporten behandlas din mejladress, ditt
+          meddelande och eventuella bilagor för att besvara ditt
+          ärende. Mejlet ger inte utvecklaren automatisk åtkomst
+          till innehållet i ditt privata hushåll eller bibliotek.
         </p>
         <p>
-          Supportmeddelanden sparas så länge de behövs för att hantera
-          ärendet och relevanta uppföljningar. Du kan kontakta samma
-          mejladress för frågor eller en begäran om radering av
-          supportuppgifter.
+          Supportmeddelanden sparas så länge de behövs för att
+          hantera ärendet och relevanta uppföljningar. Du kan
+          kontakta samma mejladress för frågor eller en begäran
+          om radering av supportuppgifter.
         </p>
 
         <h3>9. Den här webbplatsen</h3>
         <p>
           Webbplatsen använder inga egna analysverktyg, annonser,
-          externa typsnitt eller formulärtjänster. Den sätter inga
-          egna cookies och sparar inte exempelvyns val i någon databas
-          eller i webbläsarens beständiga lagring.
+          externa typsnitt eller formulärtjänster. Den sätter
+          inga egna cookies och sparar inte exempelvyns val i
+          någon databas eller i webbläsarens beständiga lagring.
         </p>
         <p>
-          Vid besök på en sida som publiceras via GitHub Pages kan
-          GitHub behandla tekniska anslutningsuppgifter, till exempel
-          IP-adress, för att leverera och skydda tjänsten. Läs
+          Vid besök på en sida som publiceras via GitHub Pages
+          kan GitHub behandla tekniska anslutningsuppgifter,
+          till exempel IP-adress, för att leverera och skydda
+          tjänsten. Läs
           <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
              target="_blank" rel="noopener noreferrer">
             GitHubs integritetspolicy
@@ -1024,14 +1707,14 @@
         <h3>10. Ändringar och frågor</h3>
         <p>
           Policyn kan uppdateras när appens funktioner eller
-          datahantering ändras. Datumet högst upp visar den senaste
-          uppdateringen.
+          datahantering ändras. Datumet högst upp visar den
+          senaste uppdateringen.
         </p>
         <p>
           Kontakta oss på
           <a href="mailto:support@sealsmile.se">support@sealsmile.se</a>
-          om något är oklart eller om du vill ställa en fråga om din
-          information.
+          om något är oklart eller om du vill ställa en fråga
+          om din information.
         </p>
       </article>
     </section>
@@ -1041,7 +1724,7 @@
     <div class="wrap footer-inner">
       <div>
         <a class="brand" href="#main">Plockis</a>
-        <p>En sak mindre att tänka på. © 2026 Plockis.</p>
+        <p>En sak mindre att tänka på. © 2026 Niklas Sälle.</p>
       </div>
 
       <nav aria-label="Sidfot">
@@ -1052,26 +1735,396 @@
   </footer>
 
   <script>
-    const boxes = [...document.querySelectorAll('.item input')];
-    const count = document.getElementById('count');
+    const demoProducts = [
+      {
+        id: "milk",
+        name: "Mjölk",
+        category: "Mejeri",
+        store: "ICA",
+        icon: "app-drop",
+        favorite: true,
+        familyFavorite: true
+      },
+      {
+        id: "bananas",
+        name: "Bananer",
+        category: "Frukt & grönt",
+        store: "Coop",
+        icon: "app-carrot",
+        favorite: false,
+        familyFavorite: true
+      },
+      {
+        id: "tomatoes",
+        name: "Tomater",
+        category: "Frukt & grönt",
+        store: "ICA",
+        icon: "app-carrot",
+        favorite: false,
+        familyFavorite: false
+      },
+      {
+        id: "pasta",
+        name: "Pasta",
+        category: "Skafferi & kryddor",
+        store: "Coop",
+        icon: "app-box",
+        favorite: false,
+        familyFavorite: true
+      }
+    ];
 
-    function updateCount() {
-      count.textContent = boxes.filter(box => !box.checked).length;
+    const demoCart = new Map();
+
+    let favoriteFilter = "all";
+
+    const grid = document.getElementById("app-product-grid");
+    const cartRows = document.getElementById("app-cart-rows");
+    const search = document.getElementById("app-search");
+    const storeFilter = document.getElementById("app-store-filter");
+    const categoryFilter = document.getElementById("app-category-filter");
+    const live = document.getElementById("app-live");
+
+    function appIcon(name) {
+      return `
+        <svg class="app-icon" aria-hidden="true">
+          <use href="#${name}"/>
+        </svg>
+      `;
     }
 
-    boxes.forEach(box => {
-      box.addEventListener('change', updateCount);
-    });
+    function renderProducts() {
+      const query = search.value.trim().toLocaleLowerCase("sv");
 
-    document.getElementById('reset').addEventListener('click', () => {
-      boxes.forEach(box => {
-        box.checked = false;
+      const visible = demoProducts.filter(product => {
+        const searchable = (
+          product.name + " " +
+          product.category + " " +
+          product.store
+        ).toLocaleLowerCase("sv");
+
+        const matchesSearch = !query || searchable.includes(query);
+        const matchesStore = !storeFilter.value ||
+          product.store === storeFilter.value;
+        const matchesCategory = !categoryFilter.value ||
+          product.category === categoryFilter.value;
+
+        const matchesFavorite =
+          favoriteFilter === "all" ||
+          (
+            favoriteFilter === "mine"
+              ? product.favorite
+              : product.favorite || product.familyFavorite
+          );
+
+        return matchesSearch &&
+          matchesStore &&
+          matchesCategory &&
+          matchesFavorite;
       });
 
-      updateCount();
+      document.getElementById("app-product-count").textContent =
+        visible.length + (visible.length === 1 ? " produkt" : " produkter");
+
+      grid.innerHTML = visible.map(product => {
+        const item = demoCart.get(product.id);
+        const quantity = item && !item.done ? item.quantity : 0;
+
+        const favoriteLabel = product.favorite
+          ? `Ta bort ${product.name} från mina favoriter`
+          : `Lägg till ${product.name} i mina favoriter`;
+
+        return `
+          <article class="app-product">
+            <div class="app-product-image">
+              ${appIcon(product.icon)}
+            </div>
+
+            <button
+              type="button"
+              class="app-heart"
+              data-heart="${product.id}"
+              aria-pressed="${product.favorite}"
+              aria-label="${favoriteLabel}">
+              ${appIcon("heart")}
+            </button>
+
+            ${quantity
+              ? `<span class="app-quantity">×${quantity}</span>`
+              : ""
+            }
+
+            <h4>${product.name}</h4>
+
+            <div class="app-product-bottom">
+              <span class="app-store">
+                ${appIcon("app-store")}
+                ${product.store}
+              </span>
+
+              <button
+                type="button"
+                class="app-add"
+                data-add="${product.id}"
+                aria-label="Lägg till ${product.name} i inköpslistan">
+                ${appIcon("app-plus")}
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      if (!visible.length) {
+        grid.innerHTML = `
+          <p class="app-empty">Inga produkter hittades.</p>
+        `;
+      }
+    }
+
+    function renderCart() {
+      const entries = [...demoCart.entries()].sort(
+        (a, b) => Number(a[1].done) - Number(b[1].done)
+      );
+
+      const remaining = entries.filter(
+        ([, item]) => !item.done
+      ).length;
+
+      document.getElementById("app-remaining").textContent = remaining;
+
+      const badge = document.getElementById("app-cart-badge");
+      badge.textContent = remaining;
+      badge.hidden = !remaining;
+
+      document.getElementById("app-cart-empty").hidden =
+        entries.length > 0;
+
+      cartRows.innerHTML = entries.map(([id, item]) => {
+        const product = demoProducts.find(product => product.id === id);
+
+        const checkLabel = item.done
+          ? `Markera som ej plockad: ${product.name}`
+          : `Plocka ${product.name}`;
+
+        return `
+          <div class="app-cart-row${item.done ? " done" : ""}">
+            <button
+              type="button"
+              class="app-check"
+              data-check="${id}"
+              aria-pressed="${item.done}"
+              aria-label="${checkLabel}">
+              ${appIcon(item.done ? "app-checked" : "app-circle")}
+            </button>
+
+            <div class="app-cart-image">
+              ${appIcon(product.icon)}
+            </div>
+
+            <div class="app-cart-main">
+              <h4>${product.name}</h4>
+
+              <span class="app-store">
+                ${appIcon("app-store")}
+                ${product.store}
+              </span>
+
+              <div class="app-stepper">
+                <button
+                  type="button"
+                  data-less="${id}"
+                  aria-label="Minska antal ${product.name}"
+                  ${item.quantity <= 1 ? "disabled" : ""}>
+                  ${appIcon("app-minus")}
+                </button>
+
+                <span>${item.quantity}</span>
+
+                <button
+                  type="button"
+                  data-add="${id}"
+                  aria-label="Öka antal ${product.name}"
+                  ${item.quantity >= 99 ? "disabled" : ""}>
+                  ${appIcon("app-plus")}
+                </button>
+              </div>
+
+              <p class="app-contribution">
+                Du har lagt till ${item.quantity} st
+              </p>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function updateDemo() {
+      renderProducts();
+      renderCart();
+    }
+
+    function showPage(page) {
+      const isCart = page === "cart";
+
+      document.getElementById("app-products-page").hidden = isCart;
+      document.getElementById("app-cart-page").hidden = !isCart;
+      document.getElementById("app-search-label").hidden = isCart;
+      document.getElementById("app-heading-plus").hidden = isCart;
+
+      document.getElementById("app-title").textContent =
+        isCart ? "Inköpslista" : "Produkter";
+
+      document.querySelectorAll("[data-app-page]").forEach(button => {
+        button.setAttribute(
+          "aria-pressed",
+          String(button.dataset.appPage === page)
+        );
+      });
+
+      document.querySelector(".app-scroll").scrollTop = 0;
+    }
+
+    document.querySelector(".screen").addEventListener("click", event => {
+      const button = event.target.closest("button");
+
+      if (!button) return;
+
+      if (button.dataset.appPage) {
+        showPage(button.dataset.appPage);
+        return;
+      }
+
+      if (button.dataset.favoriteFilter) {
+        favoriteFilter = button.dataset.favoriteFilter;
+
+        document.querySelectorAll("[data-favorite-filter]").forEach(item => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+
+        renderProducts();
+        return;
+      }
+
+      if (button.dataset.heart) {
+        const product = demoProducts.find(
+          product => product.id === button.dataset.heart
+        );
+
+        product.favorite = !product.favorite;
+
+        live.textContent = product.name + (
+          product.favorite
+            ? " sparad som favorit i exemplet."
+            : " borttagen från dina favoriter i exemplet."
+        );
+
+        renderProducts();
+
+        document.querySelector(
+          `[data-heart="${product.id}"]`
+        )?.focus({ preventScroll: true });
+
+        return;
+      }
+
+      if (button.dataset.add) {
+        const id = button.dataset.add;
+        const previous = demoCart.get(id);
+
+        const item = previous && !previous.done
+          ? previous
+          : { quantity: 0, done: false };
+
+        item.quantity = Math.min(99, item.quantity + 1);
+        demoCart.set(id, item);
+
+        const product = demoProducts.find(product => product.id === id);
+
+        live.textContent =
+          `${product.name} finns i inköpslistan: ${item.quantity} st.`;
+
+        const area = button.closest("#app-cart-rows")
+          ? cartRows
+          : grid;
+
+        updateDemo();
+
+        area.querySelector(
+          `[data-add="${id}"]`
+        )?.focus({ preventScroll: true });
+
+        return;
+      }
+
+      if (button.dataset.check) {
+        const id = button.dataset.check;
+        const item = demoCart.get(id);
+
+        item.done = !item.done;
+
+        const product = demoProducts.find(product => product.id === id);
+
+        live.textContent = product.name + (
+          item.done
+            ? " är plockad."
+            : " är kvar att plocka."
+        );
+
+        updateDemo();
+
+        cartRows.querySelector(
+          `[data-check="${id}"]`
+        )?.focus({ preventScroll: true });
+
+        return;
+      }
+
+      if (button.dataset.less) {
+        const id = button.dataset.less;
+        const item = demoCart.get(id);
+
+        item.quantity = Math.max(1, item.quantity - 1);
+
+        updateDemo();
+
+        cartRows.querySelector(
+          `[data-less="${id}"]`
+        )?.focus({ preventScroll: true });
+
+        return;
+      }
+
+      if (button.id === "app-reset") {
+        demoCart.clear();
+
+        search.value = "";
+        storeFilter.value = "";
+        categoryFilter.value = "";
+        favoriteFilter = "all";
+
+        demoProducts.forEach(product => {
+          product.favorite = product.id === "milk";
+        });
+
+        document.querySelectorAll("[data-favorite-filter]").forEach(item => {
+          item.setAttribute(
+            "aria-pressed",
+            String(item.dataset.favoriteFilter === "all")
+          );
+        });
+
+        live.textContent = "Exemplet är återställt.";
+
+        updateDemo();
+        showPage("products");
+      }
     });
 
-    updateCount();
+    search.addEventListener("input", renderProducts);
+    storeFilter.addEventListener("change", renderProducts);
+    categoryFilter.addEventListener("change", renderProducts);
+
+    updateDemo();
   </script>
 </body>
 </html>
